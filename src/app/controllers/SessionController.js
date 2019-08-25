@@ -4,7 +4,7 @@ import User from '../models/User';
 import authConfig from '../../config/auth';
 
 /* !!! IMPORTANT. MUST READ !!! THIS CONTROLLER HANDLES THE LOGIN FOR THE USERS.
-   IT HAS THE JWT LOGIN METHOD */
+   IT HAS THE JWT LOGIN METHOD. */
 
 class SessionController {
   // FIELDS VALIDATION FOR LOGIN
