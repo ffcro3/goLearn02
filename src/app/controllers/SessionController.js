@@ -2,6 +2,9 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
+/* !!! IMPORTANT. MUST READ !!! THIS CONTROLLER HANDLES THE LOGIN FOR THE USERS.
+   IT HAS THE JWT LOGIN METHOD */
+
 class SessionController {
   async store(req, res) {
     const { email, password } = req.body;
