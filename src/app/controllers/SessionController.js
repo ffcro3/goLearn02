@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import * as Yup from 'yup';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
@@ -6,7 +7,21 @@ import authConfig from '../../config/auth';
    IT HAS THE JWT LOGIN METHOD */
 
 class SessionController {
+  // FIELDS VALIDATION FOR LOGIN
   async store(req, res) {
+    const schema = Yup.object().shape({
+      email: Yup.string()
+        .email()
+        .required(),
+      password: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({
+        error: 'Validation Failed',
+      });
+    }
+
     const { email, password } = req.body;
 
     const user = await User.findOne({
