@@ -147,7 +147,7 @@ class AppointmentController {
 
     if (appointment.user_id !== req.userId) {
       return res.status(401).json({
-        error: "You don't have ermission to cancel this appointment",
+        error: "You don't have permission to cancel this appointment",
       });
     }
 

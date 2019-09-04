@@ -13,7 +13,7 @@ class NotificationController {
     if (!isProvider) {
       return res
         .status(401)
-        .json({ error: 'Notifications is only allowe for Providers' });
+        .json({ error: 'Notifications is only allowed for Providers' });
     }
 
     const notifications = await Notification.find({

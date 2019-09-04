@@ -31,7 +31,7 @@ class SessionController {
     });
 
     if (!user) {
-      return res.sstatus(401).json({
+      return res.status(401).json({
         error: 'User not found',
       });
     }
