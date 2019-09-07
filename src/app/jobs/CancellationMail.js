@@ -10,7 +10,17 @@ class CancellationMail {
   async handle({ data }) {
     const { appointment } = data;
 
-    console.log('A fila executou');
+    const dateFormatted = format(
+      parseISO(appointment.date),
+      "'dia' dd 'de' MMMM', às ' H:mm'h'",
+      {
+        locale: pt,
+      }
+    );
+
+    console.log(
+      `New Cancellation. From: ${appointment.user.name}, at: ${dateFormatted}. Provider name: ${appointment.provider.name}`
+    );
 
     await Mail.sendMail({
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
@@ -19,13 +29,7 @@ class CancellationMail {
       context: {
         provider: appointment.provider.name,
         user: appointment.user.name,
-        date: format(
-          parseISO(appointment.date),
-          "'dia' dd 'de' MMMM', às ' H:mm'h'",
-          {
-            locale: pt,
-          }
-        ),
+        date: dateFormatted,
       },
     });
   }
