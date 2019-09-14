@@ -33,7 +33,7 @@ class AvailableController {
     });
 
     const schedule = [
-      '08:00', //2019-09-07 08:00:00
+      '08:00',
       '09:00',
       '10:00',
       '11:00',
